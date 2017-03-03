@@ -1,0 +1,21 @@
+services:
+    dmzx.groupspage.listener:
+        class: dmzx\groupspage\event\listener
+        arguments:
+            - '@user'
+            - '@template'
+            - '@controller.helper'
+        tags:
+            - { name: event.listener }
+    dmzx.groupspage.controller:
+        class: dmzx\groupspage\controller\groupspage
+        arguments:
+            - '@template'
+            - '@user'
+            - '@auth'
+            - '@dbal.conn'
+            - '@config'
+            - '@controller.helper'
+            - '@cache'
+            - '%core.root_path%'
+            - '%core.php_ext%'            
