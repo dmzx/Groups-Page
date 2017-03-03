@@ -5,7 +5,7 @@
 ## Install
 1. Download the latest release.
 2. In the `ext` directory of your phpBB board, create a new directory named `dmzx` (if it does not already exist).
-3. Copy the `groupspage` folder to `phpBB/ext/dmzx/` (if done correctly, you'll have the main extension class at (your forum root)/ext/dmzx/groupspage/composer.json).
+3. Copy the `groupspage` folder to `/ext/dmzx/` (if done correctly, you'll have the main extension class at (your forum root)/ext/dmzx/groupspage/composer.json).
 4. Navigate in the ACP to `Customise -> Manage extensions`.
 5. Look for `Groups Page` under the Disabled Extensions list, and click its `Enable` link.
 
