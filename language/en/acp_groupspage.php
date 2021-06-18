@@ -2,14 +2,11 @@
 /**
 *
 * @package phpBB Extension - Groups Page
-* @copyright (c) 2017 dmzx - https://www.dmzx-web.net
+* @copyright (c) 2021 dmzx - https://www.dmzx-web.net
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
 
-/**
-* DO NOT CHANGE
-*/
 if (!defined('IN_PHPBB'))
 {
 	exit;
@@ -37,8 +34,8 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, [
-	'GROUP_TITLE'		=> 'Groups',
-	'GROUPS_TEXT'		=> 'A list of groups that we have on this forum.',
-	'NO_LEADERS'		=> 'This group does not have a leader assigned.',
-	'NO_MEMBERS'		=> 'There are currently no members in this group.',
+	'GROUPSPAGE_ALLOW'							=> 'Enable Delete Inactive Users',
+	'GROUPSPAGE_SAVED'							=> 'Groups page settings saved.',
+	'GROUPSPAGE_EXCEPTIONS'						=> 'Group exception(s)',
+	'GROUPSPAGE_EXCEPTIONS_EXPLAIN'				=> 'Exclude the groups here.<br />Select multiple groups by holding <samp>CTRL</samp> (or <samp>&#8984;CMD</samp> on Mac) and clicking.',
 ]);

@@ -1,4 +1,13 @@
 services:
+    dmzx.groupspage.admin.controller:
+        class: dmzx\groupspage\controller\admin_controller
+        arguments:
+            - '@config'
+            - '@template'
+            - '@log'
+            - '@user'
+            - '@request'
+            - '@dbal.conn'
     dmzx.groupspage.listener:
         class: dmzx\groupspage\event\listener
         arguments:
@@ -6,7 +15,7 @@ services:
             - '@template'
             - '@controller.helper'
         tags:
-            - { name: event.listener }
+            - { name: 'event.listener' }
     dmzx.groupspage.controller:
         class: dmzx\groupspage\controller\groupspage
         arguments:

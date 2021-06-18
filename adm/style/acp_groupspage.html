@@ -1,0 +1,30 @@
+{% INCLUDE 'overall_header.html' %}
+
+<div id="unique_deleteinactiveusers"></div>
+
+<h1>{{ lang('ACP_GROUPSPAGE_TITLE') }}</h1>
+
+<p><img src="https://img.shields.io/badge/{{ lang('Version') }}-{{ GROUPSPAGE_VERSION }}-green.svg?style=plastic" /></p>
+
+<form id="acp_groupspage" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('ACP_GROUPSPAGE_TITLE_SETTINGS') }}</legend>
+		<dl>
+			<dt>
+				<label>{{ lang('GROUPSPAGE_EXCEPTIONS') ~ lang('COLON') }}</label><br /><span>{{ lang('GROUPSPAGE_EXCEPTIONS_EXPLAIN') }}</span>
+			</dt>
+			<dd>
+				<select name="groupspage_group_exceptions[]" size="10" multiple="multiple">
+				{{ GROUPSPAGE_EXCEPTIONS }}
+				</select>
+			</dd>
+		</dl>
+	</fieldset>
+	<fieldset class="submit-buttons">
+		<legend>{{ lang('SUBMIT') }}</legend>
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />
+	</fieldset>
+	{{ S_FORM_TOKEN }}
+</form>
+
+{% INCLUDE 'overall_footer.html' %}

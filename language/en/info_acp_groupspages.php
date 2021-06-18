@@ -2,14 +2,11 @@
 /**
 *
 * @package phpBB Extension - Groups Page
-* @copyright (c) 2017 dmzx - https://www.dmzx-web.net
+* @copyright (c) 2021 dmzx - https://www.dmzx-web.net
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
 
-/**
-* DO NOT CHANGE
-*/
 if (!defined('IN_PHPBB'))
 {
 	exit;
@@ -32,13 +29,12 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 //
-// Some characters you may want to copy&paste:
+// Some characters for use
 // ’ » “ ” …
-//
 
 $lang = array_merge($lang, [
-	'GROUP_TITLE'		=> 'Groups',
-	'GROUPS_TEXT'		=> 'A list of groups that we have on this forum.',
-	'NO_LEADERS'		=> 'This group does not have a leader assigned.',
-	'NO_MEMBERS'		=> 'There are currently no members in this group.',
+	'ACP_GROUPSPAGE_TITLE'					=> 'Groups page',
+	'ACP_GROUPSPAGE_TITLE_SETTINGS'			=> 'Settings',
+	//Log
+	'LOG_GROUPSPAGE_SAVED'					=> '<strong>Groups page settings saved.</strong>',
 ]);

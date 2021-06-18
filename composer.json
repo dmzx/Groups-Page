@@ -2,27 +2,29 @@
 	"name": "dmzx/groupspage",
 	"type": "phpbb-extension",
 	"description": "Groups Page will add link in footer to show all groups of the board with members.",
-	"homepage": "http://www.dmzx-web.net",
-	"version": "1.0.0",
-	"time": "2017-03-02",
-	"keywords": ["phpbb", "extension", "groupspage"],
-	"license": "GPL-2.0",
+	"version": "1.0.1",
+	"time": "2021-06-18",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"groupspage"
+	],
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "dmzx",
-			"homepage": "http://www.dmzx-web.net",
+			"homepage": "https://www.dmzx-web.net",
 			"email": "info@dmzx-web.net",
 			"role": "Extension Developer"
 		},
 		{
 			"name": "martin",
-			"homepage": "http://www.martins.homelinux.net",
+			"homepage": "https://www.martins-phpbb-test.com",
 			"role": "Extension Developer"
 		}
 	],
 	"require": {
-		"php": ">=5.3.3",
-		"phpbb/phpbb": ">=3.2.0-a1,<3.3.0@dev"
+		"php": ">=7.1.3"
 	},
 	"require-dev": {
 		"phpbb/epv": "dev-master"
@@ -30,12 +32,14 @@
 	"extra": {
 		"display-name": "Groups Page",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.0-a1,<3.3.0@dev"
+			"phpbb/phpbb": ">=3.2.0,<4.0.0@dev"
 		},
 		"version-check": {
 			"host": "www.dmzx-web.net",
 			"directory": "/versions",
-			"filename": "groupspage_32x_version.json"
+			"filename": "groupspage_32x_version.json",
+			"ssl": true
 		}
 	}
 }
+

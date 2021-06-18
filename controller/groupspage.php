@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB Extension - Groups Page
-* @copyright (c) 2017 dmzx - http://www.dmzx-web.net
+* @copyright (c) 2017 dmzx - https://www.dmzx-web.net
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
@@ -108,29 +108,17 @@ class groupspage
 		$this->db->sql_freeresult($result);
 
 		// groups not displayed
-		// you can add to the array if wanted
-		// by adding the group name to ignore into the array
-		// default group names are GUESTS REGISTERED REGISTERED_COPPA GLOBAL_MODERATORS ADMINISTRATORS BOTS
-		$groups_not_display = array('GUESTS', 'BOTS');
-
-		// don't want coppa group?
-		if (!$this->config['coppa_enable'])
-		{
-			$no_coppa = array('REGISTERED_COPPA');
-			$groups_not_display = array_merge($groups_not_display, $no_coppa);
-
-			//free up a bit 'o memory
-			unset($no_coppa);
-		}
+		$groups_not_display = ['GUESTS', 'BOTS'];
 
 		// get the groups
 		$sql = 'SELECT *
 			FROM ' . GROUPS_TABLE . '
 			WHERE ' . $this->db->sql_in_set('group_name', $groups_not_display, true) . '
+			AND ' . $this->db->sql_in_set('group_id', explode(',', $this->config['groupspage_group_exceptions']), true) . '
 			ORDER BY group_name';
 		$result = $this->db->sql_query($sql);
 
-		$group_rows = array();
+		$group_rows = [];
 		while ($row = $this->db->sql_fetchrow($result))
 		{
 			$group_rows[] = $row;
@@ -151,7 +139,7 @@ class groupspage
 				ORDER BY ug.group_leader DESC, u.username ASC';
 			$result = $this->db->sql_query($sql);
 
-			$group_users = $group_leaders = array();
+			$group_users = $group_leaders = [];
 			while ($row = $this->db->sql_fetchrow($result))
 			{
 				if ($row['group_leader'])
@@ -189,7 +177,7 @@ class groupspage
 					$rank_img = '';
 				}
 
-				$this->template->assign_block_vars('groups', array(
+				$this->template->assign_block_vars('groups', [
 					'GROUP_ID'			=> $group_rows[$i]['group_id'],
 					'GROUP_NAME'		=> ($group_rows[$i]['group_type'] == GROUP_SPECIAL) ? $this->user->lang['G_' . $group_rows[$i]['group_name']] : $group_rows[$i]['group_name'],
 					'GROUP_DESC'		=> generate_text_for_display($group_rows[$i]['group_desc'], $group_rows[$i]['group_desc_uid'], $group_rows[$i]['group_desc_bitfield'], $group_rows[$i]['group_desc_options']),
@@ -198,15 +186,15 @@ class groupspage
 					'RANK_IMG'			=> $rank_img,
 					'U_VIEW_GROUP'		=> append_sid("{$this->root_path}memberlist.$this->php_ext", 'mode=group&amp;g=' . $group_id),
 					'S_SHOW_RANK'		=> true,
-				));
+				]);
 
 				if (!empty($group_leaders[$group_id]))
 				{
 					foreach ($group_leaders[$group_id] as $group_leader)
 					{
-						$this->template->assign_block_vars('groups.leaders', array(
+						$this->template->assign_block_vars('groups.leaders', [
 							'U_VIEW_PROFILE' => $group_leader,
-						));
+						]);
 					}
 				}
 
@@ -214,18 +202,18 @@ class groupspage
 				{
 					foreach ($group_users[$group_id] as $group_user)
 					{
-						$this->template->assign_block_vars('groups.members', array(
+						$this->template->assign_block_vars('groups.members', [
 							'U_VIEW_PROFILE' => $group_user,
-						));
+						]);
 					}
 				}
 			}
 		}
 
 		// Set up the Navlinks for the forums navbar
-		$this->template->assign_block_vars('navlinks', array(
+		$this->template->assign_block_vars('navlinks', [
 			'FORUM_NAME' => $this->user->lang['GROUPS'],
-		));
+		]);
 
 		// Send all data to the template file
 		return $this->helper->render('groups_body.html', $this->user->lang('GROUP_TITLE'));

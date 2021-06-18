@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB Extension - Groups Page
-* @copyright (c) 2017 dmzx - http://www.dmzx-web.net
+* @copyright (c) 2017 dmzx - https://www.dmzx-web.net
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
@@ -45,17 +45,17 @@ class listener implements EventSubscriberInterface
 
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.page_header'	=> 'page_header',
-		);
+		];
 	}
 
 	public function page_header($event)
 	{
 		$this->user->add_lang_ext('dmzx/groupspage', 'common');
 
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'U_GROUPS'	=> $this->helper->route('dmzx_groupspage_controller'),
-		));
+		]);
 	}
 }

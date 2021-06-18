@@ -1,36 +1,36 @@
-<!-- INCLUDE overall_header.html -->
+{% INCLUDE 'overall_header.html' %}
 
-<h2>{L_GROUP_TITLE}</h2>
+<h2>{{ lang('GROUP_TITLE') }}</h2>
 
-<p>{L_GROUPS_TEXT}</p>
+<p>{{ lang('GROUPS_TEXT') }}</p>
 
-<!-- BEGIN groups -->
+{% for groups in loops.groups %}
 <div class="panel">
 	<div class="inner">
 		<div class="group-left">
-			<h2 style="margin-top: 0;"><a href="{groups.U_VIEW_GROUP}" style="<!-- IF groups.GROUP_COLOUR --> color: #{groups.GROUP_COLOUR};<!-- ENDIF -->" title="{groups.GROUP_NAME}">{groups.GROUP_NAME}</a></h2>
+			<h2 style="margin-top: 0;"><a href="{{ groups.U_VIEW_GROUP }}" style="{% if groups.GROUP_COLOUR %} color: #{{ groups.GROUP_COLOUR }};{% endif %}" title="{{ groups.GROUP_NAME }}">{{ groups.GROUP_NAME }}</a></h2>
 			<p class="group-rank">
-				{groups.RANK_IMG}
-				{groups.GROUP_RANK}<br />
-				{groups.GROUP_DESC}
+				{{ groups.RANK_IMG }}
+				{{ groups.GROUP_RANK }}<br />
+				{{ groups.GROUP_DESC }}
 			</p>
 		</div>
 		<div class="group-right">
-			<!-- BEGIN leaders -->
-				<span class="group-leaders"<!-- IF groups.leaders.S_LAST_ROW --> style="border-bottom: 1px dotted <!-- IF groups.GROUP_COLOUR -->#{groups.GROUP_COLOUR}<!-- ENDIF -->;"<!-- ENDIF -->><strong>&raquo;</strong> {groups.leaders.U_VIEW_PROFILE}</strong></span>
-			<!-- BEGINELSE -->
-				<span class="group-leaders" style="border-bottom: 1px dotted <!-- IF groups.GROUP_COLOUR -->#{groups.GROUP_COLOUR}<!-- ENDIF -->;">{L_NO_LEADERS}</span>
-			<!-- END leaders -->
+			{% for leaders in groups.leaders %}
+				<span class="group-leaders"{% if leaders.S_LAST_ROW %} style="border-bottom: 1px dotted {% if groups.GROUP_COLOUR %}#{{ groups.GROUP_COLOUR }}{% endif %};"{% endif %}><strong>&raquo;</strong> {{ leaders.U_VIEW_PROFILE }}</strong></span>
+			{% else %}
+				<span class="group-leaders" style="border-bottom: 1px dotted {% if groups.GROUP_COLOUR %}#{{ groups.GROUP_COLOUR }}{% endif %};">{{ lang('NO_LEADERS') }}</span>
+			{% endfor %}
 			<div class="group-container">
-				<!-- BEGIN members -->
-					<span class="group-members">{groups.members.U_VIEW_PROFILE}</span>
-				<!-- BEGINELSE -->
-					<span class="group-members">{L_NO_MEMBERS}</span>
-				<!-- END members -->
+				{% for members in groups.members %}
+					<span class="group-members">{{ members.U_VIEW_PROFILE }}</span>
+				{% else %}
+					<span class="group-members">{{ lang('NO_MEMBERS') }}</span>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
 </div>
-<!-- END groups -->
+{% endfor %}
 
-<!-- INCLUDE overall_footer.html -->
+{% INCLUDE 'overall_footer.html' %}

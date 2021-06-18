@@ -1,6 +1,6 @@
 # Groups Page Extension
 
-[![Build Status](https://travis-ci.org/dmzx/Groups-Page.svg?branch=master)](https://travis-ci.org/dmzx/Groups-Page)
+[![Build Status](https://travis-ci.com/dmzx/Groups-Page.svg?branch=master)](https://travis-ci.com/dmzx/Groups-Page)
 
 ## Install
 1. Download the latest release.
